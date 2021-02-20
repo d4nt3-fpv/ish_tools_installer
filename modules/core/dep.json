@@ -1,0 +1,90 @@
+{
+  "git" : {
+    "name" : "git",
+    "command_apt" : "sudo apt-get install -y git",
+    "command_apk" : "apk add git"
+
+},
+
+  "python" : {
+
+    "name" : "python",
+    "command_apt" : "sudo apt-get install -y python3",
+    "command_apk" : "apk add python"
+
+  },
+
+  "php" : {
+
+    "name" : "php",
+    "command_apt" : "sudo apt-get install -y php5-common libapache2-mod-php5 php5-cli",
+    "command_apk" : "apk add php"
+
+  },
+
+  "golang" : {
+
+    "name" : "golang",
+    "command_apt" : "sudo apt-get install -y golang",
+    "command_apk" : "apk add go"
+
+  },
+
+  "ruby" : {
+
+    "name" : "ruby",
+    "command_apt" : "sudo apt-get install -y ruby",
+    "command_apk" : "apk add ruby"
+
+  },
+
+  "perl" : {
+
+    "name" : "perl",
+    "command_apt" : "sudo apt-get install -y perl",
+    "command_apk" : "apk add perl"
+
+  },
+
+  "clang" : {
+
+    "name" : "clang",
+    "command_apt" : "sudo apt-get install -y clang",
+    "command_apk" : "apk add clang"
+
+  },
+
+  "gcc" : {
+
+    "name" : "gcc",
+    "command_apt" : "sudo apt install -y build-essential",
+    "command_apk" : "apk add build-base"
+
+  },
+
+  "g++" : {
+
+    "name" : "g++",
+    "command_apt" : "sudo apt-get install -y g++",
+    "command_apk" : "apk add g++"
+
+  },
+
+  "proot" : {
+
+    "name" : "proot",
+    "command_apt" : "sudo apt-get install -y proot",
+    "command_apk" : "apk add proot"
+
+  },
+
+  "curl" : {
+
+    "name" : "curl",
+    "command_apt" : "sudo apt-get install -y curl",
+    "command_apk" : "apk add curl"
+
+  }
+
+
+}

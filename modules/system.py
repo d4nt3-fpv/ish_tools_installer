@@ -14,6 +14,9 @@ class system():
         with open('core/data.json') as file:
             self.data = json.load(file)
 
+        with  open('core/dep.json') as depfile:
+            self.dep_data = json.load(depfile)
+
 
         # print(data["4nonimizer"]["name"])
 
