@@ -29,6 +29,6 @@ class main_menu():
 
         self.choosen_option = input("##> ")
 
-        return self.choosen_option
+        choosen_option = self.choosen_option
 
 

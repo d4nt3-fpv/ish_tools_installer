@@ -4,29 +4,39 @@ from main_menu import *
 main_menu()
 
 
+class system():
 
-with open('core/data.json') as file:
-    data = json.load(file)
+    def __init__(self):
+        pass
 
-
-# print(data["4nonimizer"]["name"])
-
-names = []
-urls = []
-dependencies = []
-categories = [[]]
+    with open('core/data.json') as file:
+        data = json.load(file)
 
 
-for name in data:
-    names.append(name)
-    urls.append(data[name]["url"])
-    dependencies.append(data[name]["dependency"])
-    categories.append([str(data[name]["name"]) , str(data[name]["category"])])
+    # print(data["4nonimizer"]["name"])
+
+    names = []
+    urls = []
+    dependencies = []
+    # categories = [[]]
+
+    categories = {}
 
 
-print(names)
-print(urls)
-print(dependencies)
-print(categories)
+    for name in data:
+        names.append(name)
+        urls.append(data[name]["url"])
+        dependencies.append(data[name]["dependency"])
+        # categories.append([str(data[name]["name"]) , str(data[name]["category"])])
+        categories[data[name]["name"]] = data[name]["category"]
 
-# print(data)
+
+    print(names)
+    print(urls)
+    print(dependencies)
+    print(categories)
+
+    # print(data)
+
+
+system()
