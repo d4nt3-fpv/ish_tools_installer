@@ -88,6 +88,15 @@ class system():
         self.linux_version = input("What distro do you use? (Type A= Alpine, U=ubuntu):  ")
         return(self.linux_version)
 
+    def show_banner(self, text):
+        item = text
+        inst_msg = " Installing: " + item + " "
+        print(" " + "_" * len(inst_msg))
+        print("|" + " " * len(inst_msg) + "|")
+        print("|" + inst_msg + "|")
+        print("|" + "_" * len(inst_msg) + "|")
+
+
 
     def install_all(self):
         print("Install all")
@@ -100,6 +109,8 @@ class system():
             if self.linux_version.lower() == "a":
                 for com in self.dep_commands_apk:
                     try:
+                        subprocess.call("clear")
+                        self.show_banner(com)
                         subprocess.call(com)
                     except:
                         print("Could not run: " + com)
@@ -107,6 +118,8 @@ class system():
             elif self.linux_version.lower() == "u":
                 for com in self.dep_commands_apt:
                     try:
+                        subprocess.call("clear")
+                        self.show_banner(com)
                         subprocess.call(com)
                     except:
                         print("Could not run: " + com)
@@ -120,9 +133,12 @@ class system():
         # Install the tools:
         for item in self.names:
             if v == "alpine":
+
                 install_command = ("apk add " + item)
                 print(install_command)
                 try:
+                    subprocess.call("clear")
+                    self.show_banner(item)
                     subprocess.call(install_command)
                 except:
                     print("Could not install " + item)
@@ -131,6 +147,8 @@ class system():
                 install_command = ("sudo apt-get install " + item)
                 print(install_command)
                 try:
+                    subprocess.call("clear")
+                    self.show_banner(item)
                     subprocess.call(install_command)
                 except:
                     print("Could not install " + item)
