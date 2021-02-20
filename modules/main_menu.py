@@ -1,5 +1,5 @@
 class main_menu():
-
+    global choosen_option
     def __init__(self):
 
 
@@ -21,14 +21,14 @@ class main_menu():
 
     def choose_options(self):
 
-        print("Please select an obtion: ")
+        print("Please select an option: ")
         print("1) Install all tools")
         print("2) Install tools by category")
         print("3) Choose a tool to install")
         print("4) About this project")
+        print("5) Exit the  program")
 
-        self.choosen_option = input("##> ")
 
-        choosen_option = self.choosen_option
+
 
 
