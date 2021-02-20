@@ -1,9 +1,12 @@
 import json
+from main_menu import *
+
+main_menu()
+
+
 
 with open('core/data.json') as file:
     data = json.load(file)
-
-
 
 
 # print(data["4nonimizer"]["name"])

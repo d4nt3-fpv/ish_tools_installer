@@ -2,6 +2,8 @@ class main_menu():
 
     def __init__(self):
 
+
+
         print('''
         
              /$$$$$$  /$$$$$$  /$$   /$$         /$$                         /$$                 /$$$$$$                       /$$               /$$ /$$                    
@@ -15,9 +17,18 @@ class main_menu():
                                                                                                                                                                            
 ''')
 
+        self.choose_options()
 
-    print("Please select an obtion: ")
-    print("1) Install ")
+    def choose_options(self):
+
+        print("Please select an obtion: ")
+        print("1) Install all tools")
+        print("2) Install tools by category")
+        print("3) Choose a tool to install")
+        print("4) About this project")
+
+        self.choosen_option = input("##> ")
+
+        return self.choosen_option
 
 
-main_menu()
