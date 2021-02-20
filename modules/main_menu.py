@@ -23,10 +23,11 @@ class main_menu():
 
         print("Please select an option: ")
         print("1) Install all tools")
-        print("2) Install tools by category")
-        print("3) Choose a tool to install")
-        print("4) About this project")
-        print("5) Exit the  program")
+        print("2) Clone all tools from github")
+        print("3) Install tools by category")
+        print("4) Choose a tool to install")
+        print("5) About this project")
+        print("6) Exit the program")
 
 
 

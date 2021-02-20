@@ -55,13 +55,13 @@ class system():
 
         self.dependencies_without_duplicates = list(dict.fromkeys(self.one_dimensional_dependencies))
 
-        print(self.one_dimensional_dependencies)
-        print(self.dependencies_without_duplicates)
+        # print(self.one_dimensional_dependencies)
+        # print(self.dependencies_without_duplicates)
 
             ####
 
         # print(names)
-        # print(urls)
+        print(self.urls)
         # print(self.dependencies)
         # print(categories)
 
@@ -73,16 +73,20 @@ class system():
             self.install_all()
 
         elif int(self.choosen_option) == 2:
-            self.install_by_category()
+            self.clone_all_tools()
 
         elif int(self.choosen_option) == 3:
-            self.install_one_tool()
+            self.install_by_category()
 
         elif int(self.choosen_option) == 4:
-            self.show_about()
+            self.install_one_tool()
 
         elif int(self.choosen_option) == 5:
+            self.show_about()
+        elif int(self.choosen_option) == 6:
             self.quit_program()
+
+
 
     def install_menu(self):
         self.linux_version = input("What distro do you use? (Type A= Alpine, U=ubuntu):  ")
@@ -153,9 +157,18 @@ class system():
                 except:
                     print("Could not install " + item)
 
+        print('''
+        
+            ███████╗██╗███╗   ██╗██╗███████╗██╗  ██╗███████╗██████╗ 
+            ██╔════╝██║████╗  ██║██║██╔════╝██║  ██║██╔════╝██╔══██╗
+            █████╗  ██║██╔██╗ ██║██║███████╗███████║█████╗  ██║  ██║
+            ██╔══╝  ██║██║╚██╗██║██║╚════██║██╔══██║██╔══╝  ██║  ██║
+            ██║     ██║██║ ╚████║██║███████║██║  ██║███████╗██████╔╝
+            ╚═╝     ╚═╝╚═╝  ╚═══╝╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚═════╝
+               
+        
+        ''')
 
-        # for self.dependency in self.dependencies:
-        #     print(self.dependency)
 
 
 
@@ -166,10 +179,36 @@ class system():
         print("Install one tool")
 
     def show_about(self):
-        print("Show about")
+        print("This tool is created by Ben Wilcken")
+        print("")
+        print("It allows you to install the kali Linux hacking tools")
+        print("into the ish app, so you can hack on the ipad.")
+        print("I was inpired by the Tool-x and have used their json file.")
+        print("So please check them out.")
+
+
+    def clone_all_tools(self):
+        if self.install_menu().lower() == "a":
+            self.git_inst_command = "apk add git"
+        else:
+            self.git_inst_command = "sudo apt-get install git"
+
+        try:
+            subprocess.call(self.git_inst_command)
+        except:
+            print("Could not install git")
+
+        for url in self.urls:
+            try:
+                subprocess.call("clear")
+                self.show_banner(url)
+                subprocess.call("git clone " + url)
+            except:
+                print("Could not clone: " + url)
 
     def quit_program(self):
-        print("Bye")
+        print("OK: Thanks for using this tool. Bye!")
+        quit()
 
 
 system()
