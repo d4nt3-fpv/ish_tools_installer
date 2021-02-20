@@ -99,11 +99,17 @@ class system():
 
             if self.linux_version.lower() == "a":
                 for com in self.dep_commands_apk:
-                    subprocess.call(com)
+                    try:
+                        subprocess.call(com)
+                    except:
+                        print("Could not run: " + com)
                 v = "alpine"
             elif self.linux_version.lower() == "u":
                 for com in self.dep_commands_apt:
-                    subprocess.call(com)
+                    try:
+                        subprocess.call(com)
+                    except:
+                        print("Could not run: " + com)
                 v = "ubuntu"
 
         except:
@@ -116,12 +122,18 @@ class system():
             if v == "alpine":
                 install_command = ("apk add " + item)
                 print(install_command)
-                subprocess.call(install_command)
+                try:
+                    subprocess.call(install_command)
+                except:
+                    print("Could not install " + item)
+
             elif v == "ubuntu":
                 install_command = ("sudo apt-get install " + item)
                 print(install_command)
-                subprocess.call(install_command)
-
+                try:
+                    subprocess.call(install_command)
+                except:
+                    print("Could not install " + item)
 
 
         # for self.dependency in self.dependencies:
