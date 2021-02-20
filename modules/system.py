@@ -1,11 +1,11 @@
 import json
-import os
 import itertools
-
+import time
+import subprocess
 from main_menu import *
 
-main_menu()
 
+main_menu()
 
 class system():
 
@@ -26,6 +26,17 @@ class system():
         # categories = [[]]
 
         self.categories = {}
+
+
+        # Put all commands in a list:
+
+        self.dep_commands_apt = []
+        self.dep_commands_apk = []
+
+
+        for dep in self.dep_data:
+            self.dep_commands_apt.append(self.dep_data[dep]["command_apt"])
+            self.dep_commands_apk.append(self.dep_data[dep]["command_apk"])
 
 
         for name in self.data:
@@ -74,15 +85,42 @@ class system():
             self.quit_program()
 
     def install_menu(self):
-        self.install_location = input("Where do you want to install?: ")
-        return(self.install_location)
+        self.linux_version = input("What distro do you use? (Type A= Alpine, U=ubuntu):  ")
+        return(self.linux_version)
 
 
     def install_all(self):
         print("Install all")
-        # print(self.install_menu())
-        # os.system("cd " + self.install_menu())
+        self.install_menu()
+        # Install the dependencies
 
+        # Install the required dependencies
+        try:
+
+            if self.linux_version.lower() == "a":
+                for com in self.dep_commands_apk:
+                    subprocess.call(com)
+                v = "alpine"
+            elif self.linux_version.lower() == "u":
+                for com in self.dep_commands_apt:
+                    subprocess.call(com)
+                v = "ubuntu"
+
+        except:
+            subprocess.call("cls")
+            print("Could not install dependencies.")
+
+
+        # Install the tools:
+        for item in self.names:
+            if v == "alpine":
+                install_command = ("apk add " + item)
+                print(install_command)
+                subprocess.call(install_command)
+            elif v == "ubuntu":
+                install_command = ("sudo apt-get install " + item)
+                print(install_command)
+                subprocess.call(install_command)
 
 
 
