@@ -319,8 +319,75 @@ class system():
     def install_one_tool(self):
         print("Install one tool")
 
+        self.install_menu()
+
+        i = 0
         for name in self.names:
-            print(name)
+            print(str(i) + ") " + name)
+            i +=1
+
+        choosen_tool_number = int(input("##> "))
+        choosen_tool = self.names[choosen_tool_number]
+        # choosen_tool_url = self.urls[choosen_tool_number]
+        # print(choosen_tool_url)
+        print(choosen_tool)
+
+
+        if self.lv == "alpine":
+
+            install_command = ("apk add " + choosen_tool)
+            print(install_command)
+            try:
+                subprocess.call("clear")
+                self.show_banner(choosen_tool)
+                subprocess.call(install_command)
+                print("######## OK: Finished Successfully! ########")
+            except:
+                print("Could not install " + choosen_tool)
+                print("Do you want to clone it from github? (y/n))")
+                clone_question = input("##> ")
+
+                if clone_question.lower() == "y":
+                    self.clone_one_tool(choosen_tool_number)
+                else:
+                    print("OK. Bye!")
+
+        elif self.lv == "ubuntu":
+            install_command = ("sudo apt-get install " + choosen_tool + " -y")
+            print(install_command)
+            try:
+                subprocess.call("clear")
+                self.show_banner(choosen_tool)
+                subprocess.call(install_command)
+                print("######## OK: Finished Successfully! ########")
+            except:
+                print("Could not install " + choosen_tool)
+                print("Do you want to clone it from github? (y/n))")
+                clone_question = input("##> ")
+
+                if clone_question.lower() == "y":
+                    self.clone_one_tool(choosen_tool_number)
+                else:
+                    print("OK. Bye!")
+
+        # self.clone_one_tool(5)
+
+
+    def clone_one_tool(self, number):
+        choosen_tool_url = self.urls[number]
+        print("--- Cloning " + choosen_tool_url + "---")
+
+        try:
+            clone_string = "git clone " + choosen_tool_url
+            subprocess.call(clone_string)
+            print("######## OK: Finished Successfully! ########")
+
+        except:
+            print("Could not clone " + choosen_tool_url)
+
+
+
+
 
 
     def show_about(self):
