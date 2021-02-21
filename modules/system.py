@@ -220,7 +220,7 @@ class system():
                     print("Could not install " + item)
 
             elif self.v == "ubuntu":
-                install_command = ("sudo apt-get install " + item)
+                install_command = ("sudo apt-get install " + item + " -y")
                 print(install_command)
                 try:
                     subprocess.call("clear")
@@ -304,7 +304,7 @@ class system():
                     print("Could not install " + cat_tool)
 
             elif self.lv == "ubuntu":
-                install_command = ("sudo apt-get install " + cat_tool)
+                install_command = ("sudo apt-get install " + cat_tool + " -y")
                 print(install_command)
                 try:
                     subprocess.call("clear")
@@ -319,6 +319,10 @@ class system():
     def install_one_tool(self):
         print("Install one tool")
 
+        for name in self.names:
+            print(name)
+
+
     def show_about(self):
         print("This tool is created by Ben Wilcken")
         print("")
@@ -332,7 +336,7 @@ class system():
         if self.install_menu().lower() == "a":
             self.git_inst_command = "apk add git"
         else:
-            self.git_inst_command = "sudo apt-get install git"
+            self.git_inst_command = "sudo apt-get install git -y"
 
         try:
             subprocess.call(self.git_inst_command)
