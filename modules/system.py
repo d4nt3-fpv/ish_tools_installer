@@ -2,8 +2,8 @@ import json
 import itertools
 import time
 import subprocess
-from main_menu import *
-from category_menu import *
+from modules.main_menu import *
+from modules.category_menu import *
 
 main_menu()
 
@@ -11,13 +11,13 @@ class system():
 
     def __init__(self):
 
-        with open('core/data.json') as file:
+        with open('modules/core/data.json') as file:
             self.data = json.load(file)
 
-        with  open('core/dep.json') as depfile:
+        with  open('modules/core/dep.json') as depfile:
             self.dep_data = json.load(depfile)
 
-        with  open('core/cat.json') as catfile:
+        with  open('modules/core/cat.json') as catfile:
             self.cat_data = json.load(catfile)
 
 
