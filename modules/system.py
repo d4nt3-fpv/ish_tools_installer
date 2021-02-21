@@ -156,6 +156,12 @@ class system():
 
     def install_menu(self):
         self.linux_version = input("What distro do you use? (Type A= Alpine, U=ubuntu):  ")
+
+        if self.linux_version.lower() == "a":
+            self.lv = "alpine"
+        elif self.linux_version.lower() == "u":
+            self.lv = "ubuntu"
+
         return(self.linux_version)
 
     def show_banner(self, text):
@@ -184,7 +190,7 @@ class system():
                         subprocess.call(com)
                     except:
                         print("Could not run: " + com)
-                v = "alpine"
+                self.v = "alpine"
             elif self.linux_version.lower() == "u":
                 for com in self.dep_commands_apt:
                     try:
@@ -193,7 +199,7 @@ class system():
                         subprocess.call(com)
                     except:
                         print("Could not run: " + com)
-                v = "ubuntu"
+                self.v = "ubuntu"
 
         except:
             subprocess.call("cls")
@@ -202,7 +208,7 @@ class system():
 
         # Install the tools:
         for item in self.names:
-            if v == "alpine":
+            if self.v == "alpine":
 
                 install_command = ("apk add " + item)
                 print(install_command)
@@ -213,7 +219,7 @@ class system():
                 except:
                     print("Could not install " + item)
 
-            elif v == "ubuntu":
+            elif self.v == "ubuntu":
                 install_command = ("sudo apt-get install " + item)
                 print(install_command)
                 try:
@@ -243,8 +249,6 @@ class system():
         category_menu()
 
         choosen_category_option = int(input("##> "))
-
-        cat_list_to_install = 0
 
         if choosen_category_option == 1:
             cat_list_to_install = self.information_gathering
@@ -284,9 +288,32 @@ class system():
 
         print(cat_list_to_install)
 
+        self.install_menu()
 
+        # Install the tools:
+        for  cat_tool in cat_list_to_install:
+            if self.lv == "alpine":
 
+                install_command = ("apk add " + cat_tool)
+                print(install_command)
+                try:
+                    subprocess.call("clear")
+                    self.show_banner(cat_tool)
+                    subprocess.call(install_command)
+                except:
+                    print("Could not install " + cat_tool)
 
+            elif self.lv == "ubuntu":
+                install_command = ("sudo apt-get install " + cat_tool)
+                print(install_command)
+                try:
+                    subprocess.call("clear")
+                    self.show_banner(cat_tool)
+                    subprocess.call(install_command)
+                except:
+                    print("Could not install " + cat_tool)
+
+        print("######## OK: Finished Successfully! ########")
 
 
     def install_one_tool(self):
