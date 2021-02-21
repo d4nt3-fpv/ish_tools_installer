@@ -3,7 +3,7 @@ import itertools
 import time
 import subprocess
 from main_menu import *
-
+from category_menu import *
 
 main_menu()
 
@@ -39,22 +39,22 @@ class system():
 
         #### Lists for the categories ###
 
-        information_gathering = []
-        vulnerability_scanner = []
-        exploitation_tools = []
-        wireless_testing = []
-        forensics_tools = []
-        web_hacking = []
-        stress_testing = []
-        sniffing_spoofing = []
-        password_attack = []
-        maintaining_access = []
-        ip_tracking = []
-        programming_language = []
-        ddos = []
-        web_server = []
-        termux_os = []
-        other = []
+        self.information_gathering = []
+        self.vulnerability_scanner = []
+        self.exploitation_tools = []
+        self.wireless_testing = []
+        self.forensics_tools = []
+        self.web_hacking = []
+        self.stress_testing = []
+        self.sniffing_spoofing = []
+        self.password_attack = []
+        self.maintaining_access = []
+        self.ip_tracking = []
+        self.programming_language = []
+        self.ddos = []
+        self.web_server = []
+        self.termux_os = []
+        self.other = []
 
 
         # Put all commands in a list:
@@ -76,37 +76,37 @@ class system():
             self.categories[self.data[name]["name"]] = self.data[name]["category"]
 
             if str(self.data[name]["category"]) == "['information_gathering']":
-                information_gathering.append(str(self.data[name]["name"]))
+                self.information_gathering.append(str(self.data[name]["name"]))
             elif str(self.data[name]["category"]) == "['vulnerability_scanner']":
-                vulnerability_scanner.append(str(self.data[name]["name"]))
+                self.vulnerability_scanner.append(str(self.data[name]["name"]))
             elif str(self.data[name]["category"]) == "['exploitation_tools']":
-                exploitation_tools.append(str(self.data[name]["name"]))
+                self.exploitation_tools.append(str(self.data[name]["name"]))
             elif str(self.data[name]["category"]) == "['wireless_testing']":
-                wireless_testing.append(str(self.data[name]["name"]))
+                self.wireless_testing.append(str(self.data[name]["name"]))
             elif str(self.data[name]["category"]) == "['forensics_tools']":
-                forensics_tools.append(str(self.data[name]["name"]))
+                self.forensics_tools.append(str(self.data[name]["name"]))
             elif str(self.data[name]["category"]) == "['web_hacking']":
-                web_hacking.append(str(self.data[name]["name"]))
+                self.web_hacking.append(str(self.data[name]["name"]))
             elif str(self.data[name]["category"]) == "['stress_testing']":
-                stress_testing.append(str(self.data[name]["name"]))
+                self.stress_testing.append(str(self.data[name]["name"]))
             elif str(self.data[name]["category"]) == "['sniffing_spoofing']":
-                sniffing_spoofing.append(str(self.data[name]["name"]))
+                self.sniffing_spoofing.append(str(self.data[name]["name"]))
             elif str(self.data[name]["category"]) == "['password_attack']":
-                password_attack.append(str(self.data[name]["name"]))
+                self.password_attack.append(str(self.data[name]["name"]))
             elif str(self.data[name]["category"]) == "['maintaining_access']":
-                maintaining_access.append(str(self.data[name]["name"]))
+                self.maintaining_access.append(str(self.data[name]["name"]))
             elif str(self.data[name]["category"]) == "['ip_tracking']":
-                ip_tracking.append(str(self.data[name]["name"]))
+                self.ip_tracking.append(str(self.data[name]["name"]))
             elif str(self.data[name]["category"]) == "['programming_language']":
-                programming_language.append(str(self.data[name]["name"]))
+                self.programming_language.append(str(self.data[name]["name"]))
             elif str(self.data[name]["category"]) == "['ddos']":
-                ddos.append(str(self.data[name]["name"]))
+                self.ddos.append(str(self.data[name]["name"]))
             elif str(self.data[name]["category"]) == "['web_server']":
-                web_server.append(str(self.data[name]["name"]))
+                self.web_server.append(str(self.data[name]["name"]))
             elif str(self.data[name]["category"]) == "['termux_os']":
-                termux_os.append(str(self.data[name]["name"]))
+                self.termux_os.append(str(self.data[name]["name"]))
             else:
-                other.append(str(self.data[name]["name"]))
+                self.other.append(str(self.data[name]["name"]))
                 # print(self.data[name]["category"])
 
 
@@ -240,6 +240,54 @@ class system():
 
     def install_by_category(self):
         print("Install category")
+        category_menu()
+
+        choosen_category_option = int(input("##> "))
+
+        cat_list_to_install = 0
+
+        if choosen_category_option == 1:
+            cat_list_to_install = self.information_gathering
+        elif choosen_category_option == 2:
+            cat_list_to_install = self.vulnerability_scanner
+        elif choosen_category_option == 3:
+            cat_list_to_install = self.exploitation_tools
+        elif choosen_category_option == 4:
+            cat_list_to_install = self.wireless_testing
+        elif choosen_category_option == 5:
+            cat_list_to_install = self.forensics_tools
+        elif choosen_category_option == 6:
+            cat_list_to_install = self.web_hacking
+        elif choosen_category_option == 7:
+            cat_list_to_install = self.stress_testing
+        elif choosen_category_option == 8:
+            cat_list_to_install = self.sniffing_spoofing
+        elif choosen_category_option == 9:
+            cat_list_to_install = self.password_attack
+        elif choosen_category_option == 10:
+            cat_list_to_install = self.maintaining_access
+        elif choosen_category_option == 11:
+            cat_list_to_install = self.ip_tracking
+        elif choosen_category_option == 12:
+            cat_list_to_install = self.programming_language
+        elif choosen_category_option == 13:
+            cat_list_to_install = self.ddos
+        elif choosen_category_option == 14:
+            cat_list_to_install = self.web_server
+        elif choosen_category_option == 15:
+            cat_list_to_install = self.termux_os
+        elif choosen_category_option == 16:
+            cat_list_to_install = self.other
+        else:
+            print("Command not found.")
+            self.quit_program()
+
+        print(cat_list_to_install)
+
+
+
+
+
 
     def install_one_tool(self):
         print("Install one tool")
