@@ -17,6 +17,15 @@ class system():
         with  open('core/dep.json') as depfile:
             self.dep_data = json.load(depfile)
 
+        with  open('core/cat.json') as catfile:
+            self.cat_data = json.load(catfile)
+
+
+        # cat_list = []
+        #
+        # for cat_name in self.cat_data:
+        #     cat_list.append(cat_name)
+
 
         # print(data["4nonimizer"]["name"])
 
@@ -26,6 +35,26 @@ class system():
         # categories = [[]]
 
         self.categories = {}
+
+
+        #### Lists for the categories ###
+
+        information_gathering = []
+        vulnerability_scanner = []
+        exploitation_tools = []
+        wireless_testing = []
+        forensics_tools = []
+        web_hacking = []
+        stress_testing = []
+        sniffing_spoofing = []
+        password_attack = []
+        maintaining_access = []
+        ip_tracking = []
+        programming_language = []
+        ddos = []
+        web_server = []
+        termux_os = []
+        other = []
 
 
         # Put all commands in a list:
@@ -46,7 +75,44 @@ class system():
             # categories.append([str(data[name]["name"]) , str(data[name]["category"])])
             self.categories[self.data[name]["name"]] = self.data[name]["category"]
 
+            if str(self.data[name]["category"]) == "['information_gathering']":
+                information_gathering.append(str(self.data[name]["name"]))
+            elif str(self.data[name]["category"]) == "['vulnerability_scanner']":
+                vulnerability_scanner.append(str(self.data[name]["name"]))
+            elif str(self.data[name]["category"]) == "['exploitation_tools']":
+                exploitation_tools.append(str(self.data[name]["name"]))
+            elif str(self.data[name]["category"]) == "['wireless_testing']":
+                wireless_testing.append(str(self.data[name]["name"]))
+            elif str(self.data[name]["category"]) == "['forensics_tools']":
+                forensics_tools.append(str(self.data[name]["name"]))
+            elif str(self.data[name]["category"]) == "['web_hacking']":
+                web_hacking.append(str(self.data[name]["name"]))
+            elif str(self.data[name]["category"]) == "['stress_testing']":
+                stress_testing.append(str(self.data[name]["name"]))
+            elif str(self.data[name]["category"]) == "['sniffing_spoofing']":
+                sniffing_spoofing.append(str(self.data[name]["name"]))
+            elif str(self.data[name]["category"]) == "['password_attack']":
+                password_attack.append(str(self.data[name]["name"]))
+            elif str(self.data[name]["category"]) == "['maintaining_access']":
+                maintaining_access.append(str(self.data[name]["name"]))
+            elif str(self.data[name]["category"]) == "['ip_tracking']":
+                ip_tracking.append(str(self.data[name]["name"]))
+            elif str(self.data[name]["category"]) == "['programming_language']":
+                programming_language.append(str(self.data[name]["name"]))
+            elif str(self.data[name]["category"]) == "['ddos']":
+                ddos.append(str(self.data[name]["name"]))
+            elif str(self.data[name]["category"]) == "['web_server']":
+                web_server.append(str(self.data[name]["name"]))
+            elif str(self.data[name]["category"]) == "['termux_os']":
+                termux_os.append(str(self.data[name]["name"]))
+            else:
+                other.append(str(self.data[name]["name"]))
+                # print(self.data[name]["category"])
 
+
+
+        # print(other)
+        # print(self.categories)
 
         ### Make a one dimensional array out of the multi-dimensional dependency list.
 
@@ -61,9 +127,9 @@ class system():
             ####
 
         # print(names)
-        print(self.urls)
+        # print(self.urls)
         # print(self.dependencies)
-        # print(categories)
+        # print(self.categories)
 
         # print(data)
 
