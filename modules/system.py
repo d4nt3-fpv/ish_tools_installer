@@ -395,8 +395,8 @@ class system():
         print("")
         print("It allows you to install the kali Linux hacking tools")
         print("into the ish app, so you can hack on the ipad.")
-        print("I was inpired by the Tool-x and have used their json file.")
-        print("So please check them out.")
+        print("I was inpired by the Tool-x and have used his json file.")
+        print("So please check him out.")
 
 
     def clone_all_tools(self):
